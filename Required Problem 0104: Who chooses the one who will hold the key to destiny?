@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Judge {
+    char name[50];
+    char gender[10];
+    char affiliation[50];
+    char title[50];
+    char specialty[50];
+    char email[50];
+    char phone[20];
+};
+
+int main() {
+    struct Judge judges[10];
+    char project[50];
+    int total, i;
+    char choice;
+
+    printf("Enter project name: ");
+    fgets(project, 50, stdin);
+    project[strlen(project)-1] = '\0';
+
+    printf("Enter number of judges (max 10): ");
+    scanf("%d", &total);
+    getchar();
+
+    for(i = 0; i < total; i++) {
+        printf("\nJudge %d:\n", i+1);
+        printf("Name: "); fgets(judges[i].name, 50, stdin);
+        printf("Gender: "); fgets(judges[i].gender, 10, stdin);
+        printf("Affiliation: "); fgets(judges[i].affiliation, 50, stdin);
+        printf("Title: "); fgets(judges[i].title, 50, stdin);
+        printf("Specialty: "); fgets(judges[i].specialty, 50, stdin);
+        printf("Email: "); fgets(judges[i].email, 50, stdin);
+        printf("Phone: "); fgets(judges[i].phone, 20, stdin);
+
+        judges[i].name[strlen(judges[i].name)-1] = '\0';
+        judges[i].gender[strlen(judges[i].gender)-1] = '\0';
+        judges[i].affiliation[strlen(judges[i].affiliation)-1] = '\0';
+        judges[i].title[strlen(judges[i].title)-1] = '\0';
+        judges[i].specialty[strlen(judges[i].specialty)-1] = '\0';
+        judges[i].email[strlen(judges[i].email)-1] = '\0';
+        judges[i].phone[strlen(judges[i].phone)-1] = '\0';
+    }
+
+    printf("\nShow judges? (Y/N): ");
+    scanf(" %c", &choice);
+
+    if(choice == 'Y' || choice == 'y') {
+        printf("\n--- Judges List ---\n");
+        for(i = 0; i < total; i++) {
+            printf("\nJudge %d:\n", i+1);
+            printf("Name: %s\n", judges[i].name);
+            printf("Gender: %s\n", judges[i].gender);
+            printf("Affiliation: %s\n", judges[i].affiliation);
+            printf("Title: %s\n", judges[i].title);
+            printf("Specialty: %s\n", judges[i].specialty);
+            printf("Email: %s\n", judges[i].email);
+            printf("Phone: %s\n", judges[i].phone);
+        }
+    }
+
+    printf("\nDone!\n");
+    return 0;
+}
